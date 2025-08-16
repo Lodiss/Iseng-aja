@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lodi Question</title>
+<style>
+  body {
+    background-color: #f5f5dc;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+  }
+  img {
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    margin-bottom: 20px;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  .yes {
+    background-color: green;
+    color: white;
+  }
+  .no {
+    background-color: red;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<img id="mainGif" src="https://media.tenor.com/lXAQkA1qyewAAAAi/peach-goma.gif" alt="Gif">
+<h1>wud dis pretty girl b Lodi 1st gf?</h1>
+
+<div>
+  <button id="yesBtn" class="btn yes" onclick="yesClicked()">YES</button>
+  <button id="noBtn" class="btn no" onclick="noClicked()">NO</button>
+</div>
+
+<script>
+// Menghitung berapa kali tombol "NO" diklik
+let noCount = 0;
+
+// Daftar teks yang akan muncul di tombol "NO"
+let noTexts = [
+  "r u sure?",
+  "no again? 🙄",
+  "plsssss pokieeee",
+  "why u keep sayin no?",
+  "cmon pokieee, don't say no",
+  "this is da last time",
+  "plsssss...",
+  "fine...",
+  "jokesss pokieeee",
+  "nvm then :("
+];
+
+// Daftar ukuran font untuk tombol "YES" (semakin besar)
+let yesSizes = [
+  "25px", "50px", "100px", "180px",
+  "300px", "500px", "800px", "1200px",
+  "2000px"
+];
+
+// Daftar lebar untuk tombol "NO" (semakin kecil secara horizontal)
+let noWidths = [
+  "120px", "100px", "80px", "60px",
+  "50px", "40px", "30px", "20px", "10px"
+];
+
+function noClicked() {
+  noCount++;
+
+  let yesBtn = document.getElementById("yesBtn");
+  let noBtn = document.getElementById("noBtn");
+
+  // Mengubah teks tombol "NO" berdasarkan noCount
+  if (noCount <= noTexts.length) {
+    noBtn.textContent = noTexts[noCount - 1];
+  }
+
+  // Mengubah ukuran font tombol "YES" dan lebar tombol "NO"
+  if (noCount <= yesSizes.length) {
+    yesBtn.style.fontSize = yesSizes[noCount - 1];
+    noBtn.style.width = noWidths[noCount - 1]; // Mengubah lebar, bukan font size
+    yesBtn.style.padding = "20px";
+  }
+
+  // Jika diklik 10 kali, tombol "NO" hilang dan tombol "YES" memenuhi layar
+  if (noCount === 10) {
+    // Sembunyikan elemen lain
+    document.getElementById("mainGif").style.display = "none";
+    document.querySelector("h1").style.display = "none";
+    noBtn.style.display = "none";
+
+    // Buat tombol "YES" menjadi fullscreen dan di tengah
+    yesBtn.style.position = "absolute";
+    yesBtn.style.top = "50%";
+    yesBtn.style.left = "50%";
+    yesBtn.style.transform = "translate(-50%, -50%)";
+    yesBtn.style.width = "100%";
+    yesBtn.style.height = "100vh";
+    yesBtn.style.fontSize = "100px";
+    yesBtn.style.borderRadius = "0";
+  }
+}
+
+function yesClicked() {
+  document.body.innerHTML = `
+    <img src="https://media.tenor.com/QUYm4RkRi0cAAAAj/sayang-banget.gif" alt="Sayang">
+    <h1>omg rlly?? u da best 😭❤️</h1>
+  `;
+}
+</script>
+
+</body>
+</html>
